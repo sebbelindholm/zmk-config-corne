@@ -49,25 +49,16 @@
         tap-ms = <30>;
     };
 
-    macros {
-        new_macro: new_macro {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <>;
-            label = "NEW_MACRO";
-        };
-    };
-
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             display-name = "QWERTY";
             bindings = <
-&kp ESC    &kp Q  &kp W  &kp E     &kp R  &kp T                                &kp UP                &kp Y        &kp U  &kp I          &kp O    &kp P            &kp SE_A_RING
-&td0       &kp A  &kp S  &kp D     &kp F  &kp G                      &kp LEFT  &kp ENTER  &kp RIGHT  &kp H        &kp J  &kp K          &kp L    &kp SE_O_UMLAUT  &kp SE_A_UMLAUT
-&kp LCTRL  &kp Z  &kp X  &kp C     &kp V  &kp B        &kp K_MUTE              &kp DOWN              &kp N        &kp M  &kp COMMA      &kp DOT  &kp FSLH         &kp SE_TILDE
-                         &kp LGUI  &mo 1  &lt 3 SPACE                                                &lt 3 ENTER  &mo 2  &kp BACKSPACE
+&kp ESC    &kp Q           &kp W        &kp E           &kp R             &kp T                                      &mmv MOVE_UP                     &kp Y        &kp U  &kp I          &kp O    &kp P            &kp SE_A_RING
+&td0       &mt LEFT_ALT A  &mt LCTRL S  &mt LEFT_WIN D  &mt LEFT_SHIFT F  &kp G                      &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp H        &kp J  &kp K          &kp L    &kp SE_O_UMLAUT  &kp SE_A_UMLAUT
+&kp LCTRL  &kp Z           &kp X        &kp C           &mt RIGHT_ALT V   &kp B        &kp K_MUTE                    &mmv MOVE_DOWN                   &kp N        &kp M  &kp COMMA      &kp DOT  &kp FSLH         &kp SE_TILDE
+                                        &kp LGUI        &mo 1             &lt 3 SPACE                                                                 &lt 3 ENTER  &mo 2  &kp BACKSPACE
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
@@ -76,9 +67,9 @@
         lower_layer {
             display-name = "NUMBER";
             bindings = <
-&trans  &kp N1           &kp N2          &kp N3        &kp N4        &kp N5                                         &mmv MOVE_UP                     &kp N6           &kp N7           &kp N8           &kp N9           &kp N0    &kp BSPC
-&trans  &bt BT_CLR_ALL   &bt BT_SEL 0    &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3                   &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp LEFT         &kp DOWN         &kp UP           &kp RIGHT        &kp HOME  &kp PG_UP
-&trans  &rgb_ug RGB_OFF  &rgb_ug RGB_ON  &trans        &trans        &rgb_ug RGB_EFF  &kp C_MUTE                    &mmv MOVE_DOWN                   &rgb_ug RGB_EFR  &rgb_ug RGB_SPI  &rgb_ug RGB_BRI  &rgb_ug RGB_BRD  &kp END   &kp PG_DN
+&trans  &kp N1           &kp N2          &kp N3        &kp N4        &kp N5                                         &kp UP_ARROW                     &kp N6           &kp N7           &kp N8           &kp N9           &kp N0    &kp BSPC
+&trans  &bt BT_CLR_ALL   &bt BT_SEL 0    &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3                   &kp LEFT_ARROW  &kp ENTER       &kp RIGHT_ARROW  &kp LEFT         &kp DOWN         &kp UP           &kp RIGHT        &kp HOME  &kp PG_UP
+&trans  &rgb_ug RGB_OFF  &rgb_ug RGB_ON  &trans        &trans        &rgb_ug RGB_EFF  &kp C_MUTE                    &kp DOWN_ARROW                   &rgb_ug RGB_EFR  &rgb_ug RGB_SPI  &rgb_ug RGB_BRI  &rgb_ug RGB_BRD  &kp END   &kp PG_DN
                                          &trans        &trans        &trans                                                                          &kp INS          &kp DEL          &trans
             >;
 
@@ -94,7 +85,7 @@
                                     &trans     &trans     &kp SPACE                                                             &kp RET    &trans     &trans
             >;
 
-            sensor-bindings = <&scroll_encoder>;
+            sensor-bindings = <&inc_dec_kp K_SCROLL_DOWN K_SCROLL_UP>;
         };
 
         layer_3 {
