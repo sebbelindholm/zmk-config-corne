@@ -7,6 +7,8 @@
 
 #include <input/processors.dtsi>
 
+#include "keys_se_finland_sweden.h"
+
 /*
 
    &mmv_input_listener {
